@@ -32,6 +32,8 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+/build/
+/out/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -400,3 +402,31 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+!CMakeLists.txt
+
+# vcpkg
+/vcpkg/
+/vcpkg_installed/
+
+# External dependencies
+/extern/*/
+# Keep SQLite files
+!extern/sqlite/
+!extern/sqlite/**
+
+# Compiled files
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+
+# OS generated files
+.DS_Store
+.DS_Store?
+Thumbs.db
