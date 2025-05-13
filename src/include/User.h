@@ -74,10 +74,6 @@ class User
     {
         return password;
     }
-    string getPassHash()
-    {
-        return sha256(password, salt);
-    }
 };
 
 class Admin : public User

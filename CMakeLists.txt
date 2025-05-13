@@ -8,8 +8,9 @@ project(AuthServer)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find OpenSSL
+# Find required packages
 find_package(OpenSSL REQUIRED)
+find_package(SQLite3 REQUIRED)
 
 # Add source files
 file(GLOB SOURCES 
@@ -23,24 +24,12 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 # Include directories
 target_include_directories(${PROJECT_NAME} PRIVATE 
     ${OPENSSL_INCLUDE_DIR}
+    ${SQLite3_INCLUDE_DIRS}
     src/include
 )
 
 # Link libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ${OPENSSL_LIBRARIES}
-)
-
-# Add SQLite3 static library
-add_library(sqlite3 STATIC 
-    extern/sqlite/sqlite3.c
-)
-
-target_include_directories(sqlite3 PUBLIC 
-    extern/sqlite
-)
-
-target_link_libraries(${PROJECT_NAME} 
-    PRIVATE
-    sqlite3
+    SQLite::SQLite3
 )
